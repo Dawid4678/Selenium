@@ -1,11 +1,14 @@
-package org.example;
+package org.example.testcase;
 
+import org.example.pages.HomePage;
+import org.example.pages.LoginPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
+import javax.security.auth.login.LoginContext;
 import java.time.Duration;
 
 public class Main {
@@ -16,15 +19,14 @@ public class Main {
         WebDriver driver = new ChromeDriver(ops);
         driver.manage().window().maximize();
         driver.get("https://demoqa.com/books");
-        driver.findElement(By.id("login")).click();
+        HomePage homePage = new HomePage(driver);
+        LoginPage loginPage = new LoginPage(driver);
+        homePage.loginClick();
         //to perform Scroll on application using Selenium
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("window.scrollBy(0,350)", "");
-        driver.findElement(By.id("userName")).sendKeys("gunjankaushik");
-        driver.findElement(By.id("password")).sendKeys("Password@123");
-        driver.findElement(By.id("login")).click();
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        System.out.println("Jesteś na stronie" + driver.getCurrentUrl());
-        driver.quit();
+        loginPage.enterUserName("gunjankaushik");
+        loginPage.enterPassword("Password@123");
+        loginPage.clickLogin("login");
     }
 }
