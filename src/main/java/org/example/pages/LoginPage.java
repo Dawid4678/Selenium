@@ -20,7 +20,7 @@ public class LoginPage {
     public void enterPassword(String pass) {
         driver.findElement(password).sendKeys(pass);
     }
-    public void clickLogin(String log) {
-        driver.findElement(By.id("login")).click();
+    public void clickLogin() {
+        driver.findElement(login).click();
     }
 }

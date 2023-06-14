@@ -27,6 +27,6 @@ public class Main {
         js.executeScript("window.scrollBy(0,350)", "");
         loginPage.enterUserName("gunjankaushik");
         loginPage.enterPassword("Password@123");
-        loginPage.clickLogin("login");
+        loginPage.clickLogin();
+        }
     }
-}
