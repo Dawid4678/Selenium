@@ -1,7 +1,8 @@
 package org.example.pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class LoginPage {
     WebDriver driver;
@@ -10,17 +11,21 @@ public class LoginPage {
        this.driver = driver;
     }
 
-    By userName = By.id("userName");
-    By password = By.id("password");
-    By login = By.id("login");
+    @FindBy(id = "userName")
+    WebElement userName;
+    @FindBy(id = "password")
+    WebElement password;
+    @FindBy(id = "login")
+    WebElement login;
+
 
     public void enterUserName(String user) {
-        driver.findElement(userName).sendKeys(user);
+        userName.sendKeys(user);
     }
     public void enterPassword(String pass) {
-        driver.findElement(password).sendKeys(pass);
+        password.sendKeys(pass);
     }
     public void clickLogin() {
-        driver.findElement(login).click();
+        login.click();
     }
 }
